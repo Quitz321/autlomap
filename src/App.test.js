@@ -1,14 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from '@testing-library/react'
+import App from './App'
 
 test('renders the start time input', () => {
-  render(<App />);
-  expect(screen.getByPlaceholderText("Start time")).toBeInTheDocument();
-});
+  render(<App />)
+  expect(screen.getByPlaceholderText('Start time')).toBeInTheDocument()
+})
 
-test('no Distance button on the page', () => {
-  render(<App />);
-  expect(screen.queryByText("Distance")).not.toBeInTheDocument();
-});
-
-
+test('no Distance button on first load', () => {
+  render(<App />)
+  expect(screen.queryByText('Distance')).not.toBeInTheDocument()
+})
