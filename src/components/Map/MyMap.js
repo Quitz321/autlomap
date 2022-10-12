@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Map, Marker, GeoJson, GeoJsonFeature } from 'pigeon-maps'
+import { Map, Marker, GeoJson, GeoJsonFeature, ZoomControl } from 'pigeon-maps'
 import haversine from 'haversine-distance'
 
 import DatePick from '../DatePick/DatePick'
@@ -158,6 +158,7 @@ const MyMap = () => {
         >
           {[points]}
           {line}
+          <ZoomControl style={{ zIndex: 2000 }} />
         </Map>
       </div>
     </div>
