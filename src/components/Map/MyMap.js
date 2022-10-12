@@ -36,13 +36,15 @@ const MyMap = () => {
         if (created >= start && created <= end) {
           const markColor = active.includes(point.id) ? activeColor : color
           const mark = (<Marker
+            style={{"z-index": (active.includes(point.id) ? 100 : 1)}}
             width={50}
             anchor={[point.lat, point.lng]}
             color={markColor}
             onClick={() => selectPoint(point.id)}
           >
           </Marker>)
-          list.push(mark)
+          // bring selected points infront while rendering
+          active.includes(point.id) ? list.push(mark) : list.unshift(mark)
         }
 
       })
@@ -111,7 +113,7 @@ const MyMap = () => {
     data.length === 0 ? getData() : genPoints()
   });
 
-
+  // render only points fitting the timeframe and clear selected not to have hidden selected points
   useEffect(() => {
     setActive([])
     setStatus(true)
@@ -146,7 +148,7 @@ const MyMap = () => {
         </div>
       </div>
       <div className={classes.Map}>
-        <Map id="map"
+        <Map
           center={center}
           zoom={zoom}
           onBoundsChanged={({ center, zoom }) => {

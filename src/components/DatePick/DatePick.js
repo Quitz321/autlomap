@@ -7,7 +7,6 @@ const DatePick = (props) => {
   const inputProps = {
     placeholder: props.name,
     style: { fontSize: "1rem" },
-    label: "START",
   };
 
   return (
