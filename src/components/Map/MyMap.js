@@ -146,7 +146,7 @@ const MyMap = () => {
         </div>
       </div>
       <div className={classes.Map}>
-        <Map
+        <Map id="map"
           center={center}
           zoom={zoom}
           onBoundsChanged={({ center, zoom }) => {
