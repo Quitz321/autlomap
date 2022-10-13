@@ -3,14 +3,14 @@
 Clone the repo \
 Install dependecys `npm install` \
 Run it in dev mode `npm start` (opens it in browser) \
-For production build `npm run build` creates folder named build where you can find index.html to serve \
+For production build `npm run build` creates folder named build where you can find index.html to serve 
 
-Production build currently running on https://autlo.nutikratt.ee \
+Production build currently running on https://autlo.nutikratt.ee
 
 # Known issues
 
 Mobile device pinch zoom is not working correctly. zoom controls added for workaround.\
-Datetime pickers are missing validation for faulty date/time.\
+Datetime pickers are missing validation for faulty date/time.
 
 # Possible improvements
 
