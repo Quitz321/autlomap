@@ -11,7 +11,6 @@ const MyMap = () => {
   const [data, setData] = useState([])
   const [center, setCenter] = useState([58.2935, 26.5353])
   const [zoom, setZoom] = useState(10)
-  const [status, setStatus] = useState(true)
   const [active, setActive] = useState([])
   const [line, setLine] = useState()
   const [distance, setDistance] = useState()
@@ -27,27 +26,24 @@ const MyMap = () => {
       setLine()
       setDistance()
     }
-    if (status === true) {
-      const list = []
-      data.forEach((point) => {
-        const created = new Date(point.date_created)
-        if (created >= start && created <= end) {
-          const markColor = active.includes(point.id) ? activeColor : color
-          const mark = (
-            <Marker
-              style={{ zIndex: active.includes(point.id) ? 100 : 1 }}
-              width={50}
-              anchor={[point.lat, point.lng]}
-              color={markColor}
-              onClick={() => selectPoint(point.id)}
-            ></Marker>
-          )
-          list.push(mark)
-        }
-      })
-      setPoints(list)
-      setStatus(false)
-    }
+    const list = []
+    data.forEach((point) => {
+      const created = new Date(point.date_created)
+      if (created >= start && created <= end) {
+        const markColor = active.includes(point.id) ? activeColor : color
+        const mark = (
+          <Marker
+            style={{ zIndex: active.includes(point.id) ? 100 : 1 }}
+            width={50}
+            anchor={[point.lat, point.lng]}
+            color={markColor}
+            onClick={() => selectPoint(point.id)}
+          ></Marker>
+        )
+        list.push(mark)
+      }
+    })
+    setPoints(list)
   }
 
   const selectPoint = (id) => {
@@ -110,18 +106,22 @@ const MyMap = () => {
   }
 
   useEffect(() => {
-    data.length === 0 ? getData() : genPoints()
+    if (data.length === 0) {
+      getData()
+    }
   })
 
   // render only points fitting the timeframe and clear selected not to have hidden selected points
   useEffect(() => {
     setActive([])
-    setStatus(true)
+    genPoints()
   }, [start, end])
 
   useEffect(() => {
-    setStatus(true)
-  }, [active])
+    genPoints()
+  }, [active, data])
+
+  console.log('render')
 
   return (
     <div>
@@ -136,7 +136,7 @@ const MyMap = () => {
           <div className={classes.Pick}>
             {active.length === 2
               ? (
-              <Button onClick={calcHandler} text="Distance"></Button>
+                <Button onClick={calcHandler} text="Distance"></Button>
                 )
               : null}
           </div>
@@ -152,8 +152,8 @@ const MyMap = () => {
           center={center}
           zoom={zoom}
           onBoundsChanged={({ center, zoom }) => {
-            setCenter(center)
             setZoom(zoom)
+            setCenter(center)
           }}
         >
           {[points]}
