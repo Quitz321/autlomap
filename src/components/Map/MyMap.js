@@ -113,14 +113,15 @@ const MyMap = () => {
 
   // render only points fitting the timeframe and clear selected not to have hidden selected points
   useEffect(() => {
-    setActive([])
+    if (active.length !== 0) {
+      setActive([])
+    }
+    genPoints()
   }, [start, end])
 
   useEffect(() => {
     genPoints()
   }, [active, data])
-
-  console.log('render')
 
   return (
     <div>
