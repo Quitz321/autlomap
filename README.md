@@ -1,5 +1,5 @@
 # Known issues
-Mobile device pinch zoom is not working correctly. zoom controls added for workaround.
+Mobile device pinch zoom is not working correctly. zoom controls added for workaround.\
 Datetime pickers are missing validation for faulty date/time.
 
 
