@@ -1,24 +1,16 @@
 .App {
-  text-align: center;
-  min-height: 100vh;
-  min-width: 100vw;
-  overflow: hidden;
-  
+  height: 100%;
+  width: 100%;
 }
 
-.App-header {
-  height: 100vh;
-  width: 100vw;
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
 }
 
 @import "react-datetime/css/react-datetime.css";
-
-
-@media only screen and (max-width: 600px) {
-  .rdtPicker {
-    position:fixed;
-    right: 20%;
-    top:auto;
-    margin-top: 0.2em;
-  }
-}

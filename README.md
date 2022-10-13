@@ -1,3 +1,8 @@
+# Known issues
+Mobile device pinch zoom is not working correctly. zoom controls added for workaround.
+Datetime pickers are missing validation for faulty date/time.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

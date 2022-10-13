@@ -1,6 +1,6 @@
-.Map {
-  width: 100vw;
-  height: 100%;
+.Wrapper {
+  padding-top: 0.1em;
+  background-color: rgb(27, 27, 27);
 }
 
 .Picker {
@@ -9,11 +9,6 @@
   flex-wrap: wrap;
   justify-content: center;
   background-color: rgb(27, 27, 27);
-  
-}
-
-.Geo {
-  display: block;
 }
 
 .Dist {
@@ -24,13 +19,26 @@
 }
 
 .Pick {
-  margin:0.5em 0.1em 0.5em 0;
-  
+  margin: 0.5em 0.1em 0.5em 0;
 }
 
 .Pick input {
-  padding:0.2em;
+  padding: 0.2em;
   text-align: center;
-  max-width: 50vw;
+  max-width: 100vw;
   min-width: 20vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .Pick input {
+    min-width: 100%;
+  }
+  .Pick {
+    margin: 0;
+  }
+
+  .Picker {
+    flex-flow: column;
+    flex-wrap: nowrap;
+  }
 }
